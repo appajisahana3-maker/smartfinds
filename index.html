@@ -3,36 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>SmartFinds | Find Better Products</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 body{
   margin:0;
   font-family:Arial,sans-serif;
   background:#f5f7fb;
-  color:#172033;
+  color:#172033
 }
 
 header{
   background:#111827;
   color:white;
   text-align:center;
-  padding:38px 16px;
+  padding:38px 16px
 }
 
 header h1{
   margin:0;
-  font-size:36px;
+  font-size:36px
 }
 
 header p{
-  margin:10px 0 0;
-  color:#d1d5db;
+  color:#d1d5db
 }
 
 nav{
@@ -42,20 +38,20 @@ nav{
   box-shadow:0 2px 8px #ddd;
   position:sticky;
   top:0;
-  z-index:20;
+  z-index:20
 }
 
 nav a{
   color:#172033;
   text-decoration:none;
   margin:0 8px;
-  font-size:14px;
+  font-size:14px
 }
 
 .search-area{
   background:white;
   padding:28px 15px;
-  text-align:center;
+  text-align:center
 }
 
 #searchBox{
@@ -64,14 +60,14 @@ nav a{
   padding:16px;
   border:1px solid #cfd4dc;
   border-radius:12px;
-  font-size:17px;
+  font-size:17px
 }
 
 .categories,
 .retailers{
   background:white;
   padding:10px 15px 25px;
-  text-align:center;
+  text-align:center
 }
 
 .categories button,
@@ -81,19 +77,19 @@ nav a{
   border:1px solid #d5d9e0;
   border-radius:8px;
   background:#f8fafc;
-  cursor:pointer;
+  cursor:pointer
 }
 
 .categories button.active,
 .retailers button.active{
   background:#111827;
-  color:white;
+  color:white
 }
 
 .section-title{
   max-width:1100px;
-  margin:0 auto;
-  padding:25px 20px 5px;
+  margin:auto;
+  padding:25px 20px 5px
 }
 
 .products{
@@ -102,14 +98,14 @@ nav a{
   padding:20px;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:20px;
+  gap:20px
 }
 
 .product{
   background:white;
   border-radius:14px;
   padding:15px;
-  box-shadow:0 3px 12px #dfe3ea;
+  box-shadow:0 3px 12px #dfe3ea
 }
 
 .product img{
@@ -117,10 +113,11 @@ nav a{
   height:180px;
   object-fit:cover;
   border-radius:10px;
+  background:#eef1f5
 }
 
 .product h3{
-  margin:12px 0 6px;
+  margin:12px 0 6px
 }
 
 .category{
@@ -129,22 +126,23 @@ nav a{
   padding:5px 8px;
   border-radius:6px;
   font-size:12px;
-  margin-bottom:8px;
+  margin-top:10px
 }
 
 .retailer{
   color:#666;
   font-size:13px;
+  margin-top:5px
 }
 
 .product p{
   color:#596273;
-  line-height:1.5;
+  line-height:1.5
 }
 
 .price{
   font-weight:bold;
-  margin:12px 0;
+  margin:12px 0
 }
 
 .product button{
@@ -152,22 +150,22 @@ nav a{
   padding:11px;
   margin-top:6px;
   border-radius:8px;
-  cursor:pointer;
+  cursor:pointer
 }
 
 .details{
   border:1px solid #d5d9e0;
-  background:white;
+  background:white
 }
 
 .compare{
   border:1px solid #111827;
-  background:white;
+  background:white
 }
 
 .compare.selected{
   background:#111827;
-  color:white;
+  color:white
 }
 
 .product-info{
@@ -177,19 +175,19 @@ nav a{
   margin-top:6px;
   border-radius:8px;
   font-size:14px;
-  line-height:1.5;
+  line-height:1.5
 }
 
 .visit{
-  border:0 !important;
+  border:0;
   background:#9ca3af;
-  color:white;
+  color:white
 }
 
 .no-results{
   display:none;
   text-align:center;
-  padding:60px 20px;
+  padding:60px 20px
 }
 
 .compare-area{
@@ -199,53 +197,24 @@ nav a{
   padding:20px;
   background:white;
   border-radius:14px;
-  overflow-x:auto;
+  overflow-x:auto
 }
 
 .compare-table{
   width:100%;
   border-collapse:collapse;
-  min-width:600px;
+  min-width:600px
 }
 
 .compare-table th,
 .compare-table td{
   border:1px solid #ddd;
   padding:12px;
-  text-align:left;
+  text-align:left
 }
 
 .compare-table th{
-  background:#f3f4f6;
-}
-
-.recent{
-  display:none;
-  max-width:1100px;
-  margin:25px auto;
-  padding:20px;
-  background:white;
-  border-radius:14px;
-}
-
-.recent-list{
-  display:flex;
-  gap:15px;
-  overflow-x:auto;
-}
-
-.recent-card{
-  min-width:190px;
-  background:#f5f7fb;
-  padding:12px;
-  border-radius:10px;
-}
-
-.recent-card img{
-  width:100%;
-  height:110px;
-  object-fit:cover;
-  border-radius:8px;
+  background:#f3f4f6
 }
 
 .info-section{
@@ -254,7 +223,7 @@ nav a{
   padding:25px 20px;
   background:white;
   border-radius:14px;
-  line-height:1.7;
+  line-height:1.7
 }
 
 footer{
@@ -262,27 +231,20 @@ footer{
   padding:30px 15px;
   text-align:center;
   background:#111827;
-  color:#d1d5db;
+  color:#d1d5db
 }
 
 footer a{
   color:white;
-  margin:5px;
+  margin:5px
 }
 
 @media(max-width:600px){
-
-  header h1{
-    font-size:28px;
-  }
-
-  .products{
-    grid-template-columns:1fr;
-  }
-
+  header h1{font-size:28px}
+  .products{grid-template-columns:1fr}
   nav a{
     display:inline-block;
-    margin:5px;
+    margin:5px
   }
 }
 </style>
@@ -290,206 +252,122 @@ footer a{
 
 <body>
 
-<header id="home">
-  <h1>🛍️ SmartFinds</h1>
-  <p>Find, discover and compare useful products</p>
+<header>
+<h1>🛍️ SmartFinds</h1>
+<p>Find, discover and compare useful products</p>
 </header>
 
 <nav>
-  <a href="#home">Home</a>
-  <a href="#productsTitle">Products</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-  <a href="#privacy">Privacy</a>
+<a href="#">Home</a>
+<a href="#productsTitle">Products</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+<a href="#privacy">Privacy</a>
 </nav>
 
 <div class="search-area">
-  <input
-    id="searchBox"
-    type="search"
-    placeholder="🔎 Search products..."
-  >
+<input
+id="searchBox"
+type="search"
+placeholder="🔎 Search products...">
 </div>
 
 <div class="categories">
+<strong>Categories</strong><br>
 
-  <strong>Categories</strong>
+<button class="category-btn active"
+onclick="setCategory('All',this)">All</button>
 
-  <br>
+<button class="category-btn"
+onclick="setCategory('Education',this)">📚 Education</button>
 
-  <button class="category-btn active"
-    onclick="setCategory('All',this)">
-    All
-  </button>
+<button class="category-btn"
+onclick="setCategory('Electronics',this)">💻 Electronics</button>
 
-  <button class="category-btn"
-    onclick="setCategory('Education',this)">
-    📚 Education
-  </button>
+<button class="category-btn"
+onclick="setCategory('Student',this)">🎒 Student</button>
 
-  <button class="category-btn"
-    onclick="setCategory('Electronics',this)">
-    💻 Electronics
-  </button>
+<button class="category-btn"
+onclick="setCategory('Fashion',this)">👕 Fashion</button>
 
-  <button class="category-btn"
-    onclick="setCategory('Student',this)">
-    🎒 Student
-  </button>
+<button class="category-btn"
+onclick="setCategory('Home',this)">🏠 Home</button>
 
-  <button class="category-btn"
-    onclick="setCategory('Fashion',this)">
-    👕 Fashion
-  </button>
+<button class="category-btn"
+onclick="setCategory('Gaming',this)">🎮 Gaming</button>
 
-  <button class="category-btn"
-    onclick="setCategory('Home',this)">
-    🏠 Home
-  </button>
-
-  <button class="category-btn"
-    onclick="setCategory('Gaming',this)">
-    🎮 Gaming
-  </button>
-
-  <button class="category-btn"
-    onclick="setCategory('Gifts',this)">
-    🎁 Gifts
-  </button>
-
+<button class="category-btn"
+onclick="setCategory('Gifts',this)">🎁 Gifts</button>
 </div>
 
 <div class="retailers">
+<strong>Retailers</strong><br>
 
-  <strong>Retailers</strong>
+<button class="retailer-btn active"
+onclick="setRetailer('All',this)">All</button>
 
-  <br>
+<button class="retailer-btn"
+onclick="setRetailer('Amazon',this)">Amazon</button>
 
-  <button class="retailer-btn active"
-    onclick="setRetailer('All',this)">
-    All
-  </button>
+<button class="retailer-btn"
+onclick="setRetailer('Flipkart',this)">Flipkart</button>
 
-  <button class="retailer-btn"
-    onclick="setRetailer('Amazon',this)">
-    Amazon
-  </button>
+<button class="retailer-btn"
+onclick="setRetailer('AJIO',this)">AJIO</button>
 
-  <button class="retailer-btn"
-    onclick="setRetailer('Flipkart',this)">
-    Flipkart
-  </button>
-
-  <button class="retailer-btn"
-    onclick="setRetailer('AJIO',this)">
-    AJIO
-  </button>
-
-  <button class="retailer-btn"
-    onclick="setRetailer('Urbanic',this)">
-    Urbanic
-  </button>
-
+<button class="retailer-btn"
+onclick="setRetailer('Urbanic',this)">Urbanic</button>
 </div>
 
 <h2 class="section-title" id="productsTitle">
-  Popular Products
+Popular Products
 </h2>
 
 <section class="products" id="products"></section>
 
 <div class="no-results" id="noResults">
-  <h2>No matching products</h2>
-  <p>Try a different search or category.</p>
+<h2>No matching products</h2>
+<p>Try another search or category.</p>
 </div>
 
 <section class="compare-area" id="compareArea">
-
-  <h2>Compare Products</h2>
-
-  <div id="compareContent"></div>
-
-  <button onclick="clearCompare()">
-    Clear comparison
-  </button>
-
-</section>
-
-<section class="recent" id="recentSection">
-
-  <h2>Recently Viewed</h2>
-
-  <div class="recent-list" id="recentList"></div>
-
+<h2>Compare Products</h2>
+<div id="compareContent"></div>
+<button onclick="clearCompare()">Clear comparison</button>
 </section>
 
 <section class="info-section" id="about">
-
-  <h2>About SmartFinds</h2>
-
-  <p>
-    SmartFinds is a product-discovery website designed
-    to help people explore products across different
-    categories and retailers.
-  </p>
-
+<h2>About SmartFinds</h2>
+<p>
+SmartFinds helps visitors discover products across
+different categories and retailers.
+</p>
 </section>
 
 <section class="info-section" id="contact">
-
-  <h2>Contact</h2>
-
-  <p>
-    For feedback, corrections or questions about
-    SmartFinds, contact the website owner.
-  </p>
-
+<h2>Contact</h2>
+<p>
+For feedback or questions about SmartFinds,
+contact the website owner.
+</p>
 </section>
 
 <section class="info-section" id="privacy">
-
-  <h2>Privacy Policy</h2>
-
-  <p>
-    SmartFinds may use browser storage to remember
-    recently viewed products.
-  </p>
-
-  <p>
-    SmartFinds does not request passwords, OTPs or
-    banking information.
-  </p>
-
-</section>
-
-<section class="info-section" id="disclosure">
-
-  <h2>Affiliate Disclosure</h2>
-
-  <p>
-    SmartFinds may participate in legitimate affiliate
-    programs. A qualifying purchase through an affiliate
-    link may result in a commission at no additional
-    cost to the visitor.
-  </p>
-
+<h2>Privacy Policy</h2>
+<p>
+SmartFinds may use browser storage for recently
+viewed products and comparison features.
+</p>
 </section>
 
 <footer>
-
-  <p>SmartFinds © 2026</p>
-
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-  <a href="#privacy">Privacy</a>
-  <a href="#disclosure">Disclosure</a>
-
+<p>SmartFinds © 2026</p>
 </footer>
 
 <script>
 
 /* =========================
-   PRODUCT CATALOG
+   PRODUCT DATA
 ========================= */
 
 const products = [
@@ -499,7 +377,7 @@ id:1,
 name:"Scientific Calculator",
 category:"Education",
 retailer:"Amazon",
-description:"Scientific calculator for maths and exam preparation.",
+description:"Scientific calculator for maths and study.",
 keywords:"calculator maths study student education",
 image:"https://images.unsplash.com/photo-1587145820266-a5951ee6f620?auto=format&fit=crop&w=600&q=80"
 },
@@ -529,7 +407,7 @@ id:4,
 name:"Pen Set",
 category:"Education",
 retailer:"Flipkart",
-description:"Everyday writing pens for students.",
+description:"Everyday writing pens.",
 keywords:"pen writing stationery school student",
 image:"https://images.unsplash.com/photo-1585336261022-680e295ce3fe?auto=format&fit=crop&w=600&q=80"
 },
@@ -539,8 +417,8 @@ id:5,
 name:"Highlighter Set",
 category:"Education",
 retailer:"Amazon",
-description:"Highlighters for revision and notes.",
-keywords:"highlighter notes study student stationery",
+description:"Highlighters for notes and revision.",
+keywords:"highlighter notes study stationery",
 image:"https://images.unsplash.com/photo-1586282391129-76a6df230234?auto=format&fit=crop&w=600&q=80"
 },
 
@@ -549,7 +427,7 @@ id:6,
 name:"Geometry Set",
 category:"Education",
 retailer:"Flipkart",
-description:"Geometry tools for school and college.",
+description:"Geometry tools for students.",
 keywords:"geometry maths ruler compass education",
 image:"https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=600&q=80"
 },
@@ -570,7 +448,7 @@ name:"Study Planner",
 category:"Education",
 retailer:"Flipkart",
 description:"Planner for organizing study schedules.",
-keywords:"planner timetable study student education",
+keywords:"planner timetable study student",
 image:"https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=600&q=80"
 },
 
@@ -589,7 +467,7 @@ id:10,
 name:"Wireless Mouse",
 category:"Electronics",
 retailer:"Flipkart",
-description:"Wireless mouse for computers and laptops.",
+description:"Wireless mouse for computers.",
 keywords:"mouse computer laptop wireless electronics",
 image:"https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=600&q=80"
 },
@@ -599,7 +477,7 @@ id:11,
 name:"Computer Keyboard",
 category:"Electronics",
 retailer:"Amazon",
-description:"Keyboard for everyday computer use.",
+description:"Keyboard for computer use.",
 keywords:"keyboard computer typing electronics",
 image:"https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80"
 },
@@ -619,8 +497,8 @@ id:13,
 name:"Laptop Stand",
 category:"Electronics",
 retailer:"Amazon",
-description:"Stand for organizing a laptop workspace.",
-keywords:"laptop stand computer desk electronics",
+description:"Stand for a laptop workspace.",
+keywords:"laptop stand computer desk",
 image:"https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=600&q=80"
 },
 
@@ -629,8 +507,8 @@ id:14,
 name:"Bluetooth Speaker",
 category:"Electronics",
 retailer:"Flipkart",
-description:"Portable audio speaker.",
-keywords:"speaker bluetooth music audio electronics",
+description:"Portable Bluetooth speaker.",
+keywords:"speaker bluetooth music audio",
 image:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=600&q=80"
 },
 
@@ -639,7 +517,7 @@ id:15,
 name:"Webcam",
 category:"Electronics",
 retailer:"Amazon",
-description:"Webcam for online classes and video calls.",
+description:"Webcam for online classes and calls.",
 keywords:"webcam online class computer video",
 image:"https://images.unsplash.com/photo-1587826080692-f439cd0b70da?auto=format&fit=crop&w=600&q=80"
 },
@@ -649,8 +527,8 @@ id:16,
 name:"Power Bank",
 category:"Electronics",
 retailer:"Flipkart",
-description:"Portable power solution for compatible devices.",
-keywords:"powerbank battery mobile phone electronics",
+description:"Portable power solution.",
+keywords:"powerbank battery mobile phone",
 image:"https://images.unsplash.com/photo-1609592424715-1f5f1f3d1b2c?auto=format&fit=crop&w=600&q=80"
 },
 
@@ -669,7 +547,7 @@ id:18,
 name:"Water Bottle",
 category:"Student",
 retailer:"Amazon",
-description:"Reusable bottle for everyday use.",
+description:"Reusable everyday bottle.",
 keywords:"water bottle student school college",
 image:"https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80"
 },
@@ -679,7 +557,7 @@ id:19,
 name:"Lunch Bag",
 category:"Student",
 retailer:"Flipkart",
-description:"Portable lunch bag for school or college.",
+description:"Portable lunch bag.",
 keywords:"lunch bag student school college",
 image:"https://images.unsplash.com/photo-1606755456206-b25206cde27e?auto=format&fit=crop&w=600&q=80"
 },
@@ -689,7 +567,7 @@ id:20,
 name:"Pencil Pouch",
 category:"Student",
 retailer:"Amazon",
-description:"Pouch for organizing stationery.",
+description:"Pouch for stationery.",
 keywords:"pencil pouch stationery student",
 image:"https://images.unsplash.com/photo-1585336261022-680e295ce3fe?auto=format&fit=crop&w=600&q=80"
 },
@@ -699,7 +577,7 @@ id:21,
 name:"Desk Organizer",
 category:"Student",
 retailer:"Flipkart",
-description:"Organizer for stationery and study materials.",
+description:"Organizer for stationery.",
 keywords:"desk organizer study student stationery",
 image:"https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=600&q=80"
 },
@@ -709,7 +587,7 @@ id:22,
 name:"Sticky Notes",
 category:"Student",
 retailer:"Amazon",
-description:"Notes for reminders and study planning.",
+description:"Notes for reminders and planning.",
 keywords:"sticky notes study student stationery",
 image:"https://images.unsplash.com/photo-1586282391129-76a6df230234?auto=format&fit=crop&w=600&q=80"
 },
@@ -719,9 +597,9 @@ id:23,
 name:"Document Folder",
 category:"Student",
 retailer:"Flipkart",
-description:"Folder for organizing papers and documents.",
+description:"Folder for documents and notes.",
 keywords:"folder documents student college school",
-image:"https://images.unsplash.com/photo-1455885666463-6b3c9b3b6b3b?auto=format&fit=crop&w=600&q=80"
+image:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=600&q=80"
 },
 
 {
@@ -729,8 +607,8 @@ id:24,
 name:"Tote Bag",
 category:"Student",
 retailer:"Amazon",
-description:"Simple everyday carry bag.",
-keywords:"tote bag student college fashion",
+description:"Everyday carry bag.",
+keywords:"tote bag student college",
 image:"https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80"
 },
 
@@ -739,7 +617,7 @@ id:25,
 name:"Casual Shirt",
 category:"Fashion",
 retailer:"AJIO",
-description:"Casual clothing for everyday wear.",
+description:"Casual clothing.",
 keywords:"shirt fashion clothing ajio",
 image:"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=600&q=80"
 },
@@ -749,8 +627,8 @@ id:26,
 name:"Sneakers",
 category:"Fashion",
 retailer:"AJIO",
-description:"Casual footwear option.",
-keywords:"shoes sneakers fashion footwear ajio",
+description:"Casual footwear.",
+keywords:"shoes sneakers fashion footwear",
 image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80"
 },
 
@@ -770,7 +648,7 @@ name:"Hoodie",
 category:"Fashion",
 retailer:"Urbanic",
 description:"Casual hoodie.",
-keywords:"hoodie fashion clothing urbanic",
+keywords:"hoodie fashion clothing",
 image:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=600&q=80"
 },
 
@@ -779,8 +657,8 @@ id:29,
 name:"Denim Jeans",
 category:"Fashion",
 retailer:"AJIO",
-description:"Everyday denim clothing.",
-keywords:"jeans denim fashion clothing ajio",
+description:"Everyday denim.",
+keywords:"jeans denim fashion clothing",
 image:"https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=600&q=80"
 },
 
@@ -790,7 +668,7 @@ name:"T-Shirt",
 category:"Fashion",
 retailer:"Urbanic",
 description:"Casual everyday T-shirt.",
-keywords:"tshirt tshirt fashion clothing urbanic",
+keywords:"tshirt fashion clothing",
 image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80"
 },
 
@@ -800,7 +678,7 @@ name:"Fashion Bag",
 category:"Fashion",
 retailer:"AJIO",
 description:"Everyday fashion bag.",
-keywords:"bag fashion accessory ajio",
+keywords:"bag fashion accessory",
 image:"https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=600&q=80"
 },
 
@@ -810,7 +688,7 @@ name:"Sunglasses",
 category:"Fashion",
 retailer:"Urbanic",
 description:"Fashion accessory.",
-keywords:"sunglasses fashion accessory urbanic",
+keywords:"sunglasses fashion accessory",
 image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=600&q=80"
 },
 
@@ -819,7 +697,7 @@ id:33,
 name:"LED Desk Lamp",
 category:"Home",
 retailer:"Amazon",
-description:"Compact lamp for desk or bedside use.",
+description:"Desk or bedside lamp.",
 keywords:"lamp led home desk lighting",
 image:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=600&q=80"
 },
@@ -829,7 +707,7 @@ id:34,
 name:"Storage Box",
 category:"Home",
 retailer:"Flipkart",
-description:"Storage solution for household organization.",
+description:"Storage and organization box.",
 keywords:"storage box home organization",
 image:"https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=600&q=80"
 },
@@ -839,7 +717,7 @@ id:35,
 name:"Wall Clock",
 category:"Home",
 retailer:"Amazon",
-description:"Clock for home or study spaces.",
+description:"Clock for home or study.",
 keywords:"clock wall home room study",
 image:"https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?auto=format&fit=crop&w=600&q=80"
 },
@@ -850,7 +728,7 @@ name:"Cushion Cover",
 category:"Home",
 retailer:"Flipkart",
 description:"Decorative cushion cover.",
-keywords:"cushion home decor decoration",
+keywords:"cushion home decor",
 image:"https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80"
 },
 
@@ -860,7 +738,7 @@ name:"Plant Pot",
 category:"Home",
 retailer:"Amazon",
 description:"Decorative plant pot.",
-keywords:"plant pot home decoration indoor",
+keywords:"plant pot home decoration",
 image:"https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=600&q=80"
 },
 
@@ -869,7 +747,7 @@ id:38,
 name:"Tabletop Mirror",
 category:"Home",
 retailer:"Flipkart",
-description:"Compact mirror for a room or dressing area.",
+description:"Compact tabletop mirror.",
 keywords:"mirror home bedroom desk",
 image:"https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=600&q=80"
 },
@@ -879,7 +757,7 @@ id:39,
 name:"Storage Basket",
 category:"Home",
 retailer:"Amazon",
-description:"Basket for organizing household items.",
+description:"Basket for home organization.",
 keywords:"basket storage home organization",
 image:"https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=600&q=80"
 },
@@ -889,7 +767,7 @@ id:40,
 name:"Desk Mat",
 category:"Home",
 retailer:"Flipkart",
-description:"Mat for organizing a workspace.",
+description:"Mat for a workspace.",
 keywords:"desk mat office home workspace",
 image:"https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=600&q=80"
 },
@@ -909,7 +787,7 @@ id:42,
 name:"Gaming Keyboard",
 category:"Gaming",
 retailer:"Flipkart",
-description:"Keyboard for gaming and computer use.",
+description:"Keyboard for gaming.",
 keywords:"gaming keyboard computer games",
 image:"https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80"
 },
@@ -919,8 +797,8 @@ id:43,
 name:"Gaming Headset",
 category:"Gaming",
 retailer:"Amazon",
-description:"Headset for gaming audio.",
-keywords:"gaming headset headphones audio games",
+description:"Gaming audio headset.",
+keywords:"gaming headset headphones audio",
 image:"https://images.unsplash.com/photo-1599669454699-248893623440?auto=format&fit=crop&w=600&q=80"
 },
 
@@ -929,7 +807,7 @@ id:44,
 name:"Game Controller",
 category:"Gaming",
 retailer:"Flipkart",
-description:"Controller for compatible gaming systems.",
+description:"Controller for compatible systems.",
 keywords:"controller gaming games console",
 image:"https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=600&q=80"
 },
@@ -939,7 +817,7 @@ id:45,
 name:"Gaming Chair",
 category:"Gaming",
 retailer:"Amazon",
-description:"Chair for gaming and desk setups.",
+description:"Chair for gaming setups.",
 keywords:"gaming chair computer desk games",
 image:"https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=600&q=80"
 },
@@ -949,7 +827,7 @@ id:46,
 name:"Mouse Pad",
 category:"Gaming",
 retailer:"Flipkart",
-description:"Desk mat for mouse movement.",
+description:"Mouse pad for computer use.",
 keywords:"mousepad gaming computer desk",
 image:"https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?auto=format&fit=crop&w=600&q=80"
 },
@@ -960,7 +838,7 @@ name:"USB Microphone",
 category:"Gaming",
 retailer:"Amazon",
 description:"Microphone for compatible computers.",
-keywords:"microphone gaming computer audio streaming",
+keywords:"microphone gaming computer audio",
 image:"https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=600&q=80"
 },
 
@@ -969,7 +847,7 @@ id:48,
 name:"Monitor Stand",
 category:"Gaming",
 retailer:"Flipkart",
-description:"Stand for organizing a monitor setup.",
+description:"Stand for computer monitor.",
 keywords:"monitor stand gaming computer desk",
 image:"https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=80"
 },
@@ -990,7 +868,7 @@ name:"Desk Gift Set",
 category:"Gifts",
 retailer:"Flipkart",
 description:"Desk accessories suitable as a gift.",
-keywords:"gift desk accessories present office",
+keywords:"gift desk accessories present",
 image:"https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80"
 },
 
@@ -1000,7 +878,7 @@ name:"Travel Mug",
 category:"Gifts",
 retailer:"Amazon",
 description:"Reusable travel mug.",
-keywords:"travel mug gift cup present",
+keywords:"travel mug gift cup",
 image:"https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80"
 },
 
@@ -1009,7 +887,7 @@ id:52,
 name:"Photo Frame",
 category:"Gifts",
 retailer:"Flipkart",
-description:"Simple decorative photo frame.",
+description:"Decorative photo frame.",
 keywords:"photo frame gift home decoration",
 image:"https://images.unsplash.com/photo-1604917019116-716c7f1d6d7a?auto=format&fit=crop&w=600&q=80"
 },
@@ -1040,7 +918,7 @@ name:"Desk Plant",
 category:"Gifts",
 retailer:"Amazon",
 description:"Small decorative desk plant.",
-keywords:"plant desk gift home decoration",
+keywords:"plant desk gift decoration",
 image:"https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=600&q=80"
 },
 
@@ -1056,456 +934,390 @@ image:"https://images.unsplash.com/photo-1513883049090-d0b7439799bf?auto=format&
 
 ];
 
+
 /* =========================
-   WEBSITE FUNCTIONS
+   FALLBACK IMAGE
 ========================= */
 
-let currentCategory = "All";
-let currentRetailer = "All";
-let compareList = [];
+const fallbackImage =
+"https://placehold.co/600x400?text=SmartFinds+Product";
+
+
+/* =========================
+   SEARCH + FILTER
+========================= */
+
+let currentCategory="All";
+let currentRetailer="All";
+let compareList=[];
 
 function render(){
 
-  const search =
-    document
-      .getElementById("searchBox")
-      .value
-      .toLowerCase()
-      .trim();
+const search=
+document.getElementById("searchBox")
+.value
+.toLowerCase()
+.trim();
 
-  const words =
-    search ? search.split(/\s+/) : [];
+const filtered=products.filter(product=>{
 
-  const filtered =
-    products.filter(function(product){
+const categoryOK=
+currentCategory==="All" ||
+product.category===currentCategory;
 
-      const categoryOK =
-        currentCategory === "All" ||
-        product.category === currentCategory;
+const retailerOK=
+currentRetailer==="All" ||
+product.retailer===currentRetailer;
 
-      const retailerOK =
-        currentRetailer === "All" ||
-        product.retailer === currentRetailer;
+const text=(
+product.name+" "+
+product.category+" "+
+product.retailer+" "+
+product.description+" "+
+product.keywords
+).toLowerCase();
 
-      const text = (
-        product.name + " " +
-        product.category + " " +
-        product.retailer + " " +
-        product.description + " " +
-        product.keywords
-      ).toLowerCase();
+const searchOK=
+!search ||
+text.includes(search);
 
-      const searchOK =
-        words.length === 0 ||
-        words.every(function(word){
-          return text.includes(word);
-        });
+return categoryOK &&
+retailerOK &&
+searchOK;
 
-      return categoryOK &&
-             retailerOK &&
-             searchOK;
-    });
+});
 
-  const container =
-    document.getElementById("products");
+const container=
+document.getElementById("products");
 
-  const noResults =
-    document.getElementById("noResults");
+const noResults=
+document.getElementById("noResults");
 
-  container.innerHTML = "";
+container.innerHTML="";
 
-  if(filtered.length === 0){
+if(filtered.length===0){
 
-    noResults.style.display = "block";
+noResults.style.display="block";
 
-    return;
-
-  }
-
-  noResults.style.display = "none";
-
-  filtered.forEach(function(product){
-
-    const card =
-      document.createElement("article");
-
-    card.className = "product";
-
-    const selected =
-      compareList.includes(product.id);
-
-    card.innerHTML = `
-
-      <img
-        src="${product.image}"
-        alt="${product.name}"
-        loading="lazy">
-
-      <div class="category">
-        ${product.category}
-      </div>
-
-      <h3>${product.name}</h3>
-
-      <div class="retailer">
-        Retailer: ${product.retailer}
-      </div>
-
-      <p>${product.description}</p>
-
-      <div class="price">
-        Price: Check retailer
-      </div>
-
-      <button
-        class="details"
-        onclick="toggleDetails(this)">
-        More Details
-      </button>
-
-      <div class="product-info">
-        Category: ${product.category}<br>
-        Retailer: ${product.retailer}<br>
-        Product information should be
-        verified on the retailer website.
-      </div>
-
-      <button
-        class="compare ${selected ? "selected" : ""}"
-        onclick="toggleCompare(${product.id})">
-
-        ${selected ? "✓ Added to Compare" : "Compare"}
-
-      </button>
-
-      <button
-        class="visit"
-        onclick="showLinkMessage('${product.retailer}')">
-
-        Verified retailer link coming soon
-
-      </button>
-
-    `;
-
-    container.appendChild(card);
-
-  });
+return;
 
 }
+
+noResults.style.display="none";
+
+
+filtered.forEach(product=>{
+
+const card=
+document.createElement("article");
+
+card.className="product";
+
+const isSelected=
+compareList.includes(product.id);
+
+card.innerHTML=`
+
+<img
+src="${product.image}"
+alt="${product.name}"
+loading="lazy"
+onerror="this.onerror=null;this.src=fallbackImage;">
+
+<div class="category">
+${product.category}
+</div>
+
+<h3>${product.name}</h3>
+
+<div class="retailer">
+Retailer: ${product.retailer}
+</div>
+
+<p>
+${product.description}
+</p>
+
+<div class="price">
+Price: Check retailer
+</div>
+
+<button
+class="details"
+onclick="toggleDetails(this)">
+More Details
+</button>
+
+<div class="product-info">
+
+Category: ${product.category}<br>
+Retailer: ${product.retailer}<br><br>
+
+This is a catalog listing.
+Always verify the product,
+price and availability with the
+retailer before purchasing.
+
+</div>
+
+<button
+class="compare ${isSelected?"selected":""}"
+onclick="toggleCompare(${product.id})">
+
+${isSelected?
+"✓ Added to Compare":
+"Compare"}
+
+</button>
+
+<button
+class="visit"
+onclick="showRetailerMessage('${product.retailer}')">
+
+Retailer link coming soon
+
+</button>
+
+`;
+
+container.appendChild(card);
+
+});
+
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
 
 function setCategory(category,button){
 
-  currentCategory = category;
+currentCategory=category;
 
-  document
-    .querySelectorAll(".category-btn")
-    .forEach(function(btn){
-      btn.classList.remove("active");
-    });
+document
+.querySelectorAll(".category-btn")
+.forEach(btn=>{
+btn.classList.remove("active");
+});
 
-  button.classList.add("active");
+button.classList.add("active");
 
-  render();
+render();
 
 }
+
+
+/* =========================
+   RETAILER
+========================= */
 
 function setRetailer(retailer,button){
 
-  currentRetailer = retailer;
+currentRetailer=retailer;
 
-  document
-    .querySelectorAll(".retailer-btn")
-    .forEach(function(btn){
-      btn.classList.remove("active");
-    });
+document
+.querySelectorAll(".retailer-btn")
+.forEach(btn=>{
+btn.classList.remove("active");
+});
 
-  button.classList.add("active");
+button.classList.add("active");
 
-  render();
+render();
 
 }
+
+
+/* =========================
+   DETAILS
+========================= */
 
 function toggleDetails(button){
 
-  const info =
-    button.nextElementSibling;
+const info=
+button.nextElementSibling;
 
-  if(info.style.display === "block"){
+if(info.style.display==="block"){
 
-    info.style.display = "none";
-    button.innerText = "More Details";
+info.style.display="none";
+button.innerText="More Details";
 
-  }else{
+}else{
 
-    info.style.display = "block";
-    button.innerText = "Hide Details";
-
-  }
+info.style.display="block";
+button.innerText="Hide Details";
 
 }
 
-function showLinkMessage(retailer){
+}
 
-  alert(
-    "A verified " +
-    retailer +
-    " affiliate link has not been connected yet."
-  );
+
+/* =========================
+   RETAILER MESSAGE
+========================= */
+
+function showRetailerMessage(retailer){
+
+alert(
+"The verified "+retailer+
+" product link has not been connected yet."
+);
 
 }
+
+
+/* =========================
+   COMPARE
+========================= */
 
 function toggleCompare(id){
 
-  if(compareList.includes(id)){
+if(compareList.includes(id)){
 
-    compareList =
-      compareList.filter(function(item){
-        return item !== id;
-      });
+compareList=
+compareList.filter(item=>item!==id);
 
-  }else{
+}else{
 
-    if(compareList.length >= 3){
+if(compareList.length>=3){
 
-      alert("You can compare up to 3 products.");
+alert(
+"You can compare up to 3 products."
+);
 
-      return;
-
-    }
-
-    compareList.push(id);
-
-  }
-
-  render();
-  updateCompare();
+return;
 
 }
+
+compareList.push(id);
+
+}
+
+render();
+updateCompare();
+
+}
+
 
 function updateCompare(){
 
-  const area =
-    document.getElementById("compareArea");
+const area=
+document.getElementById("compareArea");
 
-  const content =
-    document.getElementById("compareContent");
+const content=
+document.getElementById("compareContent");
 
-  const selected =
-    products.filter(function(product){
-      return compareList.includes(product.id);
-    });
+const selected=
+products.filter(product=>
+compareList.includes(product.id)
+);
 
-  if(selected.length < 2){
+if(selected.length<2){
 
-    area.style.display = "none";
-    return;
+area.style.display="none";
 
-  }
-
-  let html = `
-    <table class="compare-table">
-
-      <tr>
-        <th>Information</th>
-  `;
-
-  selected.forEach(function(product){
-
-    html += `
-      <th>${product.name}</th>
-    `;
-
-  });
-
-  html += `
-      </tr>
-
-      <tr>
-        <td>Category</td>
-  `;
-
-  selected.forEach(function(product){
-
-    html += `
-      <td>${product.category}</td>
-    `;
-
-  });
-
-  html += `
-      </tr>
-
-      <tr>
-        <td>Retailer</td>
-  `;
-
-  selected.forEach(function(product){
-
-    html += `
-      <td>${product.retailer}</td>
-    `;
-
-  });
-
-  html += `
-      </tr>
-
-      <tr>
-        <td>Price</td>
-  `;
-
-  selected.forEach(function(){
-
-    html += `
-      <td>Check retailer</td>
-    `;
-
-  });
-
-  html += `
-      </tr>
-
-    </table>
-  `;
-
-  content.innerHTML = html;
-
-  area.style.display = "block";
+return;
 
 }
+
+let html=`
+<table class="compare-table">
+
+<tr>
+<th>Information</th>
+`;
+
+selected.forEach(product=>{
+
+html+=`
+<th>${product.name}</th>
+`;
+
+});
+
+html+=`
+</tr>
+
+<tr>
+<td>Category</td>
+`;
+
+selected.forEach(product=>{
+
+html+=`
+<td>${product.category}</td>
+`;
+
+});
+
+html+=`
+</tr>
+
+<tr>
+<td>Retailer</td>
+`;
+
+selected.forEach(product=>{
+
+html+=`
+<td>${product.retailer}</td>
+`;
+
+});
+
+html+=`
+</tr>
+
+<tr>
+<td>Price</td>
+`;
+
+selected.forEach(product=>{
+
+html+=`
+<td>Check retailer</td>
+`;
+
+});
+
+html+=`
+</tr>
+
+</table>
+`;
+
+content.innerHTML=html;
+
+area.style.display="block";
+
+}
+
 
 function clearCompare(){
 
-  compareList = [];
-
-  render();
-  updateCompare();
-
-}
-
-function saveRecent(id){
-
-  let recent = [];
-
-  try{
-
-    recent =
-      JSON.parse(
-        localStorage.getItem(
-          "smartfinds_recent"
-        )
-      ) || [];
-
-  }catch(error){
-
-    recent = [];
-
-  }
-
-  recent =
-    recent.filter(function(item){
-      return item !== id;
-    });
-
-  recent.unshift(id);
-
-  recent = recent.slice(0,5);
-
-  try{
-
-    localStorage.setItem(
-      "smartfinds_recent",
-      JSON.stringify(recent)
-    );
-
-  }catch(error){}
-
-  renderRecent();
-
-}
-
-function renderRecent(){
-
-  let ids = [];
-
-  try{
-
-    ids =
-      JSON.parse(
-        localStorage.getItem(
-          "smartfinds_recent"
-        )
-      ) || [];
-
-  }catch(error){
-
-    ids = [];
-
-  }
-
-  const section =
-    document.getElementById(
-      "recentSection"
-    );
-
-  const list =
-    document.getElementById(
-      "recentList"
-    );
-
-  if(ids.length === 0){
-
-    section.style.display = "none";
-    return;
-
-  }
-
-  section.style.display = "block";
-
-  list.innerHTML = "";
-
-  ids.forEach(function(id){
-
-    const product =
-      products.find(function(item){
-        return item.id === id;
-      });
-
-    if(!product)return;
-
-    const card =
-      document.createElement("div");
-
-    card.className = "recent-card";
-
-    card.innerHTML = `
-      <img
-        src="${product.image}"
-        alt="${product.name}">
-
-      <h4>${product.name}</h4>
-
-      <small>${product.retailer}</small>
-    `;
-
-    list.appendChild(card);
-
-  });
-
-}
-
-document
-  .getElementById("searchBox")
-  .addEventListener(
-    "input",
-    render
-  );
-
-/* LOAD PRODUCTS IMMEDIATELY */
+compareList=[];
 
 render();
-renderRecent();
+updateCompare();
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+document
+.getElementById("searchBox")
+.addEventListener("input",render);
+
+
+/* =========================
+   START WEBSITE
+========================= */
+
+render();
 
 </script>
 
