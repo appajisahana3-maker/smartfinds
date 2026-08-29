@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -10,6 +11,10 @@
   box-sizing:border-box;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   margin:0;
   font-family:Arial,sans-serif;
@@ -17,21 +22,52 @@ body{
   color:#172033;
 }
 
+/* NAVIGATION */
+
+.navbar{
+  background:#ffffff;
+  padding:12px 10px;
+  text-align:center;
+  border-bottom:1px solid #e5e7eb;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.navbar a{
+  display:inline-block;
+  margin:4px;
+  padding:9px 13px;
+  color:#172033;
+  text-decoration:none;
+  font-weight:bold;
+  border-radius:8px;
+}
+
+.navbar a:hover{
+  background:#eef2f7;
+}
+
+/* HEADER */
+
 header{
   background:#111827;
   color:white;
   text-align:center;
-  padding:38px 15px;
+  padding:42px 15px;
 }
 
 header h1{
   margin:0;
-  font-size:36px;
+  font-size:38px;
 }
 
 header p{
   color:#d1d5db;
+  margin-bottom:0;
 }
+
+/* SEARCH */
 
 .search-area{
   background:white;
@@ -46,7 +82,14 @@ header p{
   border:1px solid #cfd4dc;
   border-radius:12px;
   font-size:17px;
+  outline:none;
 }
+
+#searchBox:focus{
+  border-color:#111827;
+}
+
+/* FILTERS */
 
 .filters{
   background:white;
@@ -68,6 +111,8 @@ header p{
   color:white;
 }
 
+/* PRODUCTS */
+
 .section-title{
   max-width:1100px;
   margin:25px auto 5px;
@@ -88,7 +133,14 @@ header p{
   border-radius:14px;
   padding:15px;
   box-shadow:0 3px 12px #dfe3ea;
+  transition:transform .15s ease;
 }
+
+.product:hover{
+  transform:translateY(-2px);
+}
+
+/* PRODUCT VISUAL */
 
 .product-image{
   height:180px;
@@ -101,12 +153,21 @@ header p{
   text-align:center;
   color:#6b7280;
   font-weight:bold;
+  overflow:hidden;
 }
 
 .product-image-icon{
-  font-size:38px;
-  margin-bottom:8px;
+  font-size:58px;
+  line-height:1;
+  margin-bottom:12px;
 }
+
+.product-image-label{
+  font-size:13px;
+  font-weight:normal;
+}
+
+/* PRODUCT TEXT */
 
 .product h3{
   margin:12px 0 6px;
@@ -137,6 +198,8 @@ header p{
   margin:12px 0;
 }
 
+/* BUTTONS */
+
 .product button{
   width:100%;
   padding:11px;
@@ -151,6 +214,12 @@ header p{
   background:white;
 }
 
+.retailer-link{
+  border:0;
+  background:#111827;
+  color:white;
+}
+
 .info{
   display:none;
   background:#f3f4f6;
@@ -161,11 +230,7 @@ header p{
   line-height:1.5;
 }
 
-.retailer-link{
-  border:0;
-  background:#111827;
-  color:white;
-}
+/* NO RESULTS */
 
 .no-results{
   display:none;
@@ -177,6 +242,8 @@ header p{
   display:block;
 }
 
+/* INFORMATION */
+
 .trust{
   max-width:1100px;
   margin:25px auto;
@@ -186,6 +253,12 @@ header p{
   line-height:1.7;
 }
 
+.trust h2{
+  margin-top:0;
+}
+
+/* FOOTER */
+
 footer{
   margin-top:30px;
   padding:30px 15px;
@@ -193,6 +266,8 @@ footer{
   background:#111827;
   color:#d1d5db;
 }
+
+/* MOBILE */
 
 @media(max-width:600px){
 
@@ -203,13 +278,32 @@ footer{
   .products{
     grid-template-columns:1fr;
   }
+
+  .navbar a{
+    font-size:13px;
+    padding:7px 9px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header>
+<!-- NAVIGATION -->
+
+<nav class="navbar">
+
+<a href="#home">Home</a>
+<a href="#products">Products</a>
+<a href="#about">About</a>
+<a href="#disclosure">Disclosure</a>
+
+</nav>
+
+
+<!-- HEADER -->
+
+<header id="home">
 
 <h1>🛍️ SmartFinds</h1>
 
@@ -219,6 +313,8 @@ Discover useful products and find them at retailers
 
 </header>
 
+
+<!-- SEARCH -->
 
 <div class="search-area">
 
@@ -231,6 +327,8 @@ placeholder="🔎 Search products..."
 
 </div>
 
+
+<!-- FILTERS -->
 
 <div class="filters">
 
@@ -270,7 +368,6 @@ All
 🎁 Gifts
 </button>
 
-
 <br><br>
 
 <strong>Retailers</strong>
@@ -300,10 +397,11 @@ Urbanic
 </div>
 
 
+<!-- PRODUCTS -->
+
 <h2 class="section-title">
 Products
 </h2>
-
 
 <section
 class="products"
@@ -325,14 +423,30 @@ Try another product name or change the filters.
 </div>
 
 
-<section class="trust">
+<!-- ABOUT -->
+
+<section class="trust" id="about">
 
 <h2>About SmartFinds</h2>
 
 <p>
-SmartFinds helps visitors discover products
+SmartFinds helps visitors discover useful products
 and find them at different retailers.
 </p>
+
+<p>
+Our goal is to make product discovery simple,
+clear and useful.
+</p>
+
+</section>
+
+
+<!-- TRUST -->
+
+<section class="trust">
+
+<h2>Important Information</h2>
 
 <p>
 Prices, availability and specifications can change.
@@ -340,12 +454,34 @@ Always check the retailer's website before purchasing.
 </p>
 
 <p>
-Retailer buttons currently take you to retailer
-search results. They are not presented as affiliate links.
+SmartFinds does not currently claim specific product
+prices, ratings, reviews or availability.
 </p>
 
 </section>
 
+
+<!-- DISCLOSURE -->
+
+<section class="trust" id="disclosure">
+
+<h2>Affiliate Disclosure</h2>
+
+<p>
+At this stage, SmartFinds retailer buttons are
+standard retailer search links and are not presented
+as affiliate links.
+</p>
+
+<p>
+If SmartFinds later participates in an affiliate
+program, the site will clearly disclose that relationship.
+</p>
+
+</section>
+
+
+<!-- FOOTER -->
 
 <footer>
 
@@ -823,6 +959,78 @@ description:"Gift packaging option."
 
 
 /* =====================================
+   PRODUCT VISUALS
+===================================== */
+
+const productIcons = {
+
+"Scientific Calculator":"🧮",
+"Notebook Set":"📓",
+"Study Lamp":"💡",
+"Pen Set":"🖊️",
+"Highlighter Set":"🖍️",
+"Geometry Set":"📐",
+"Book Stand":"📚",
+"Study Planner":"📅",
+
+"Wireless Earphones":"🎧",
+"Wireless Mouse":"🖱️",
+"Computer Keyboard":"⌨️",
+"USB Flash Drive":"💾",
+"Laptop Stand":"💻",
+"Bluetooth Speaker":"🔊",
+"Webcam":"📷",
+"Power Bank":"🔋",
+
+"College Backpack":"🎒",
+"Water Bottle":"🧴",
+"Lunch Bag":"🍱",
+"Pencil Pouch":"✏️",
+"Desk Organizer":"🗂️",
+"Sticky Notes":"📝",
+"Document Folder":"📁",
+"Tote Bag":"👜",
+
+"Casual Shirt":"👕",
+"Sneakers":"👟",
+"Casual Dress":"👗",
+"Hoodie":"🧥",
+"Denim Jeans":"👖",
+"T-Shirt":"👕",
+"Fashion Bag":"👜",
+"Sunglasses":"🕶️",
+
+"LED Desk Lamp":"💡",
+"Storage Box":"📦",
+"Wall Clock":"🕐",
+"Cushion Cover":"🛋️",
+"Plant Pot":"🪴",
+"Tabletop Mirror":"🪞",
+"Storage Basket":"🧺",
+"Desk Mat":"▰",
+
+"Gaming Mouse":"🖱️",
+"Gaming Keyboard":"⌨️",
+"Gaming Headset":"🎧",
+"Game Controller":"🎮",
+"Gaming Chair":"🪑",
+"Mouse Pad":"▰",
+"USB Microphone":"🎙️",
+"Monitor Stand":"🖥️",
+
+"Notebook Gift Set":"🎁",
+"Desk Gift Set":"🎁",
+"Travel Mug":"☕",
+"Photo Frame":"🖼️",
+"Desk Calendar":"📅",
+"Journal":"📔",
+"Desk Plant":"🪴",
+"Gift Box":"🎁"
+
+};
+
+
+/* =====================================
    STATE
 ===================================== */
 
@@ -831,7 +1039,7 @@ let selectedRetailer = "All";
 
 
 /* =====================================
-   SAFE TEXT
+   ESCAPE HTML
 ===================================== */
 
 function escapeHTML(value){
@@ -854,7 +1062,6 @@ function retailerURL(retailer,productName){
 
 const query =
 encodeURIComponent(productName);
-
 
 switch(retailer){
 
@@ -887,7 +1094,6 @@ function openRetailer(retailer,productName){
 const url =
 retailerURL(retailer,productName);
 
-
 if(!url){
 
 alert("Retailer link is not available.");
@@ -895,7 +1101,6 @@ alert("Retailer link is not available.");
 return;
 
 }
-
 
 window.open(
 url,
@@ -907,7 +1112,7 @@ url,
 
 
 /* =====================================
-   SHOW / HIDE DETAILS
+   DETAILS
 ===================================== */
 
 function showDetails(button){
@@ -915,22 +1120,18 @@ function showDetails(button){
 const info =
 button.parentElement.querySelector(".info");
 
-
 if(!info){
 return;
 }
 
-
-const isVisible =
+const visible =
 info.style.display === "block";
 
-
 info.style.display =
-isVisible ? "none" : "block";
-
+visible ? "none" : "block";
 
 button.textContent =
-isVisible ? "More Details" : "Hide Details";
+visible ? "More Details" : "Hide Details";
 
 }
 
@@ -950,19 +1151,14 @@ document.getElementById("noResults");
 const searchBox =
 document.getElementById("searchBox");
 
-
 if(!container || !noResults || !searchBox){
-
 return;
-
 }
-
 
 const search =
 searchBox.value
 .trim()
 .toLowerCase();
-
 
 const results =
 products.filter(product=>{
@@ -971,11 +1167,9 @@ const categoryMatch =
 selectedCategory === "All" ||
 product.category === selectedCategory;
 
-
 const retailerMatch =
 selectedRetailer === "All" ||
 product.retailer === selectedRetailer;
-
 
 const searchableText =
 (
@@ -985,11 +1179,9 @@ product.retailer + " " +
 product.description
 ).toLowerCase();
 
-
 const searchMatch =
 search === "" ||
 searchableText.includes(search);
-
 
 return (
 categoryMatch &&
@@ -999,9 +1191,7 @@ searchMatch
 
 });
 
-
 container.innerHTML = "";
-
 
 if(results.length === 0){
 
@@ -1011,64 +1201,49 @@ return;
 
 }
 
-
 noResults.classList.remove("show");
-
 
 const fragment =
 document.createDocumentFragment();
-
 
 results.forEach(product=>{
 
 const card =
 document.createElement("article");
 
-
 card.className = "product";
 
-
-const safeName =
-escapeHTML(product.name);
-
-const safeCategory =
-escapeHTML(product.category);
-
-const safeRetailer =
-escapeHTML(product.retailer);
-
-const safeDescription =
-escapeHTML(product.description);
-
+const icon =
+productIcons[product.name] || "🛍️";
 
 card.innerHTML = `
 
 <div class="product-image">
 
 <div class="product-image-icon">
-🛍️
+${icon}
 </div>
 
-<div>
-Image coming soon
+<div class="product-image-label">
+Product illustration
 </div>
 
 </div>
 
 <div class="category-label">
-${safeCategory}
+${escapeHTML(product.category)}
 </div>
 
 <h3>
-${safeName}
+${escapeHTML(product.name)}
 </h3>
 
 <div class="retailer">
-Retailer: ${safeRetailer}
+Retailer: ${escapeHTML(product.retailer)}
 </div>
 
 <p>
-${safeDescription}
+${escapeHTML(product.description)}
 </p>
 
 <div class="price">
@@ -1084,39 +1259,36 @@ More Details
 <div class="info">
 
 <strong>Product:</strong>
-${safeName}
+${escapeHTML(product.name)}
 
 <br><br>
 
 <strong>Category:</strong>
-${safeCategory}
+${escapeHTML(product.category)}
 
 <br><br>
 
 <strong>Retailer:</strong>
-${safeRetailer}
+${escapeHTML(product.retailer)}
 
 <br><br>
 
-No specific product listing or price is claimed.
-Use the retailer button to search for this product.
+No specific product listing, price,
+rating or availability is claimed here.
 
 </div>
 
 <button
 type="button"
 class="retailer-link">
-🔎 Find on ${safeRetailer}
+🔎 Find on ${escapeHTML(product.retailer)}
 </button>
 
 `;
 
-
-const detailsButton =
-card.querySelector(".details");
-
-
-detailsButton.addEventListener(
+card
+.querySelector(".details")
+.addEventListener(
 "click",
 function(){
 
@@ -1125,12 +1297,9 @@ showDetails(this);
 }
 );
 
-
-const retailerButton =
-card.querySelector(".retailer-link");
-
-
-retailerButton.addEventListener(
+card
+.querySelector(".retailer-link")
+.addEventListener(
 "click",
 function(){
 
@@ -1142,11 +1311,9 @@ product.name
 }
 );
 
-
 fragment.appendChild(card);
 
 });
-
 
 container.appendChild(fragment);
 
@@ -1162,7 +1329,6 @@ function chooseCategory(category){
 selectedCategory =
 category;
 
-
 document
 .querySelectorAll(".category-filter")
 .forEach(button=>{
@@ -1173,7 +1339,6 @@ button.dataset.category === category
 );
 
 });
-
 
 renderProducts();
 
@@ -1189,7 +1354,6 @@ function chooseRetailer(retailer){
 selectedRetailer =
 retailer;
 
-
 document
 .querySelectorAll(".retailer-filter")
 .forEach(button=>{
@@ -1201,14 +1365,13 @@ button.dataset.retailer === retailer
 
 });
 
-
 renderProducts();
 
 }
 
 
 /* =====================================
-   EVENT LISTENERS
+   SEARCH
 ===================================== */
 
 document
@@ -1218,6 +1381,10 @@ document
 renderProducts
 );
 
+
+/* =====================================
+   CATEGORY EVENTS
+===================================== */
 
 document
 .querySelectorAll(".category-filter")
@@ -1236,6 +1403,10 @@ this.dataset.category
 
 });
 
+
+/* =====================================
+   RETAILER EVENTS
+===================================== */
 
 document
 .querySelectorAll(".retailer-filter")
@@ -1256,20 +1427,13 @@ this.dataset.retailer
 
 
 /* =====================================
-   INITIAL LOAD
+   START
 ===================================== */
 
-document.addEventListener(
-"DOMContentLoaded",
-function(){
-
 renderProducts();
-
-}
-);
 
 </script>
 
 </body>
 </html>
-
+  
