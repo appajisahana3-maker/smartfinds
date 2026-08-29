@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SmartFinds</title>
+
+<title>SmartFinds | Find Better Products</title>
 
 <style>
 *{
@@ -21,31 +23,31 @@ header{
   background:#111827;
   color:white;
   text-align:center;
-  padding:35px 15px;
+  padding:38px 15px;
 }
 
 header h1{
   margin:0;
-  font-size:34px;
+  font-size:36px;
 }
 
 header p{
   color:#d1d5db;
 }
 
-.search{
+.search-area{
   background:white;
-  padding:25px 15px;
+  padding:28px 15px;
   text-align:center;
 }
 
 #searchBox{
   width:92%;
-  max-width:650px;
+  max-width:700px;
   padding:15px;
-  border:1px solid #ccc;
-  border-radius:10px;
-  font-size:16px;
+  border:1px solid #cfd4dc;
+  border-radius:12px;
+  font-size:17px;
 }
 
 .filters{
@@ -55,9 +57,9 @@ header p{
 }
 
 .filters button{
+  padding:9px 14px;
   margin:4px;
-  padding:9px 13px;
-  border:1px solid #ddd;
+  border:1px solid #d5d9e0;
   border-radius:8px;
   background:#f8fafc;
   cursor:pointer;
@@ -68,7 +70,7 @@ header p{
   color:white;
 }
 
-h2{
+.section-title{
   max-width:1100px;
   margin:25px auto 5px;
   padding:0 20px;
@@ -85,9 +87,9 @@ h2{
 
 .product{
   background:white;
-  padding:15px;
   border-radius:14px;
-  box-shadow:0 3px 12px #ddd;
+  padding:15px;
+  box-shadow:0 3px 12px #dfe3ea;
 }
 
 .product-image{
@@ -95,30 +97,35 @@ h2{
   border-radius:10px;
   background:#eef1f5;
   display:flex;
+  flex-direction:column;
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:20px;
-  font-weight:bold;
   color:#6b7280;
+  font-weight:bold;
+}
+
+.product-image-icon{
+  font-size:38px;
+  margin-bottom:8px;
 }
 
 .product h3{
-  margin-bottom:6px;
+  margin:12px 0 6px;
 }
 
-.category{
+.category-label{
   display:inline-block;
-  margin-top:12px;
-  padding:5px 8px;
   background:#eef2ff;
+  padding:5px 8px;
   border-radius:6px;
   font-size:12px;
+  margin-top:10px;
 }
 
 .retailer{
-  font-size:13px;
   color:#666;
+  font-size:13px;
   margin-top:6px;
 }
 
@@ -135,31 +142,29 @@ h2{
 .product button{
   width:100%;
   padding:11px;
-  margin-top:6px;
+  margin-top:7px;
   border-radius:8px;
   cursor:pointer;
+  font-size:14px;
 }
 
 .details{
+  border:1px solid #d5d9e0;
   background:white;
-  border:1px solid #ddd;
 }
 
 .info{
   display:none;
   background:#f3f4f6;
   padding:10px;
-  margin-top:6px;
+  margin-top:7px;
   border-radius:8px;
   font-size:14px;
+  line-height:1.5;
 }
 
-.compare{
-  background:white;
-  border:1px solid #111827;
-}
-
-.compare.selected{
+.retailer-link{
+  border:0;
   background:#111827;
   color:white;
 }
@@ -170,21 +175,35 @@ h2{
   padding:60px 20px;
 }
 
+.no-results.show{
+  display:block;
+}
+
+.trust{
+  max-width:1100px;
+  margin:25px auto;
+  padding:25px 20px;
+  background:white;
+  border-radius:14px;
+  line-height:1.7;
+}
+
 footer{
   margin-top:30px;
-  background:#111827;
-  color:#ddd;
+  padding:30px 15px;
   text-align:center;
-  padding:30px;
+  background:#111827;
+  color:#d1d5db;
 }
 
 @media(max-width:600px){
-  .products{
-    grid-template-columns:1fr;
-  }
 
   header h1{
     font-size:28px;
+  }
+
+  .products{
+    grid-template-columns:1fr;
   }
 }
 </style>
@@ -193,99 +212,164 @@ footer{
 <body>
 
 <header>
-  <h1>🛍️ SmartFinds</h1>
-  <p>Find useful products from different retailers</p>
+
+<h1>🛍️ SmartFinds</h1>
+
+<p>
+Discover useful products and find them at retailers
+</p>
+
 </header>
 
-<div class="search">
-  <input
-    id="searchBox"
-    type="search"
-    placeholder="🔎 Search products..."
-  >
+
+<div class="search-area">
+
+<input
+id="searchBox"
+type="search"
+autocomplete="off"
+placeholder="🔎 Search products..."
+>
+
 </div>
+
 
 <div class="filters">
 
-  <strong>Categories</strong><br>
+<strong>Categories</strong>
 
-  <button class="category active" onclick="chooseCategory('All',this)">
-    All
-  </button>
+<br>
 
-  <button class="category" onclick="chooseCategory('Education',this)">
-    📚 Education
-  </button>
+<button class="category-filter active" data-category="All">
+All
+</button>
 
-  <button class="category" onclick="chooseCategory('Electronics',this)">
-    💻 Electronics
-  </button>
+<button class="category-filter" data-category="Education">
+📚 Education
+</button>
 
-  <button class="category" onclick="chooseCategory('Student',this)">
-    🎒 Student
-  </button>
+<button class="category-filter" data-category="Electronics">
+💻 Electronics
+</button>
 
-  <button class="category" onclick="chooseCategory('Fashion',this)">
-    👕 Fashion
-  </button>
+<button class="category-filter" data-category="Student">
+🎒 Student
+</button>
 
-  <button class="category" onclick="chooseCategory('Home',this)">
-    🏠 Home
-  </button>
+<button class="category-filter" data-category="Fashion">
+👕 Fashion
+</button>
 
-  <button class="category" onclick="chooseCategory('Gaming',this)">
-    🎮 Gaming
-  </button>
+<button class="category-filter" data-category="Home">
+🏠 Home
+</button>
 
-  <button class="category" onclick="chooseCategory('Gifts',this)">
-    🎁 Gifts
-  </button>
+<button class="category-filter" data-category="Gaming">
+🎮 Gaming
+</button>
 
-  <br><br>
+<button class="category-filter" data-category="Gifts">
+🎁 Gifts
+</button>
 
-  <strong>Retailers</strong><br>
 
-  <button class="retailer active" onclick="chooseRetailer('All',this)">
-    All
-  </button>
+<br><br>
 
-  <button class="retailer" onclick="chooseRetailer('Amazon',this)">
-    Amazon
-  </button>
+<strong>Retailers</strong>
 
-  <button class="retailer" onclick="chooseRetailer('Flipkart',this)">
-    Flipkart
-  </button>
+<br>
 
-  <button class="retailer" onclick="chooseRetailer('AJIO',this)">
-    AJIO
-  </button>
+<button class="retailer-filter active" data-retailer="All">
+All
+</button>
 
-  <button class="retailer" onclick="chooseRetailer('Urbanic',this)">
-    Urbanic
-  </button>
+<button class="retailer-filter" data-retailer="Amazon">
+Amazon
+</button>
+
+<button class="retailer-filter" data-retailer="Flipkart">
+Flipkart
+</button>
+
+<button class="retailer-filter" data-retailer="AJIO">
+AJIO
+</button>
+
+<button class="retailer-filter" data-retailer="Urbanic">
+Urbanic
+</button>
 
 </div>
 
-<h2>Products</h2>
 
-<div class="products" id="products"></div>
+<h2 class="section-title">
+Products
+</h2>
 
-<div class="no-results" id="noResults">
-  <h2>No matching products</h2>
-  <p>Try another search.</p>
+
+<section
+class="products"
+id="products"
+aria-live="polite">
+</section>
+
+
+<div
+class="no-results"
+id="noResults">
+
+<h2>No matching products</h2>
+
+<p>
+Try another product name or change the filters.
+</p>
+
 </div>
+
+
+<section class="trust">
+
+<h2>About SmartFinds</h2>
+
+<p>
+SmartFinds helps visitors discover products
+and find them at different retailers.
+</p>
+
+<p>
+Prices, availability and specifications can change.
+Always check the retailer's website before purchasing.
+</p>
+
+<p>
+Retailer buttons currently take you to retailer
+search results. They are not presented as affiliate links.
+</p>
+
+</section>
+
 
 <footer>
-  <p>SmartFinds © 2026</p>
-  <p>Product information should always be checked with the retailer.</p>
+
+<p>
+SmartFinds © 2026
+</p>
+
+<p>
+Product information should be checked with the retailer.
+</p>
+
 </footer>
+
 
 <script>
 
-/* =========================
+"use strict";
+
+
+/* =====================================
    PRODUCT DATABASE
-========================= */
+===================================== */
 
 const products = [
 
@@ -740,52 +824,124 @@ description:"Gift packaging option."
 ];
 
 
-/* =========================
-   FILTERS
-========================= */
+/* =====================================
+   STATE
+===================================== */
 
-let selectedCategory="All";
-let selectedRetailer="All";
+let selectedCategory = "All";
+let selectedRetailer = "All";
 
+
+/* =====================================
+   SAFE TEXT
+===================================== */
+
+function escapeHTML(value){
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================
+   RETAILER URL
+===================================== */
+
+function retailerURL(retailer,productName){
+
+const query =
+encodeURIComponent(productName);
+
+
+switch(retailer){
+
+case "Amazon":
+return "https://www.amazon.in/s?k="+query;
+
+case "Flipkart":
+return "https://www.flipkart.com/search?q="+query;
+
+case "AJIO":
+return "https://www.ajio.com/search/?text="+query;
+
+case "Urbanic":
+return "https://in.urbanic.com/search?query="+query;
+
+default:
+return null;
+
+}
+
+}
+
+
+/* =====================================
+   OPEN RETAILER
+===================================== */
+
+function openRetailer(retailer,productName){
+
+const url =
+retailerURL(retailer,productName);
+
+
+if(!url){
+
+alert("Retailer link is not available.");
+
+return;
+
+}
+
+
+window.open(
+url,
+"_blank",
+"noopener,noreferrer"
+);
+
+}
+
+
+/* =====================================
+   SHOW / HIDE DETAILS
+===================================== */
+
+function showDetails(button){
+
+const info =
+button.parentElement.querySelector(".info");
+
+
+if(!info){
+return;
+}
+
+
+const isVisible =
+info.style.display === "block";
+
+
+info.style.display =
+isVisible ? "none" : "block";
+
+
+button.textContent =
+isVisible ? "More Details" : "Hide Details";
+
+}
+
+
+/* =====================================
+   RENDER PRODUCTS
+===================================== */
 
 function renderProducts(){
-
-const search =
-document
-.getElementById("searchBox")
-.value
-.toLowerCase()
-.trim();
-
-
-const results = products.filter(product=>{
-
-const categoryMatch =
-selectedCategory==="All" ||
-product.category===selectedCategory;
-
-const retailerMatch =
-selectedRetailer==="All" ||
-product.retailer===selectedRetailer;
-
-const searchText =
-(
-product.name+" "+
-product.category+" "+
-product.retailer+" "+
-product.description
-).toLowerCase();
-
-const searchMatch =
-search==="" ||
-searchText.includes(search);
-
-return categoryMatch &&
-retailerMatch &&
-searchMatch;
-
-});
-
 
 const container =
 document.getElementById("products");
@@ -793,50 +949,128 @@ document.getElementById("products");
 const noResults =
 document.getElementById("noResults");
 
-container.innerHTML="";
+const searchBox =
+document.getElementById("searchBox");
 
 
-if(results.length===0){
-
-noResults.style.display="block";
+if(!container || !noResults || !searchBox){
 
 return;
 
 }
 
 
-noResults.style.display="none";
+const search =
+searchBox.value
+.trim()
+.toLowerCase();
+
+
+const results =
+products.filter(product=>{
+
+const categoryMatch =
+selectedCategory === "All" ||
+product.category === selectedCategory;
+
+
+const retailerMatch =
+selectedRetailer === "All" ||
+product.retailer === selectedRetailer;
+
+
+const searchableText =
+(
+product.name + " " +
+product.category + " " +
+product.retailer + " " +
+product.description
+).toLowerCase();
+
+
+const searchMatch =
+search === "" ||
+searchableText.includes(search);
+
+
+return (
+categoryMatch &&
+retailerMatch &&
+searchMatch
+);
+
+});
+
+
+container.innerHTML = "";
+
+
+if(results.length === 0){
+
+noResults.classList.add("show");
+
+return;
+
+}
+
+
+noResults.classList.remove("show");
+
+
+const fragment =
+document.createDocumentFragment();
 
 
 results.forEach(product=>{
 
 const card =
-document.createElement("div");
-
-card.className="product";
+document.createElement("article");
 
 
-card.innerHTML=`
+card.className = "product";
+
+
+const safeName =
+escapeHTML(product.name);
+
+const safeCategory =
+escapeHTML(product.category);
+
+const safeRetailer =
+escapeHTML(product.retailer);
+
+const safeDescription =
+escapeHTML(product.description);
+
+
+card.innerHTML = `
 
 <div class="product-image">
-🖼️<br>
+
+<div class="product-image-icon">
+🛍️
+</div>
+
+<div>
 Image coming soon
 </div>
 
-<div class="category">
-${product.category}
+</div>
+
+<div class="category-label">
+${safeCategory}
 </div>
 
 <h3>
-${product.name}
+${safeName}
 </h3>
 
 <div class="retailer">
-Retailer: ${product.retailer}
+Retailer: ${safeRetailer}
 </div>
 
 <p>
-${product.description}
+${safeDescription}
 </p>
 
 <div class="price">
@@ -844,99 +1078,199 @@ Price: Check retailer
 </div>
 
 <button
-class="details"
-onclick="showDetails(this)">
+type="button"
+class="details">
 More Details
 </button>
 
 <div class="info">
+
 <strong>Product:</strong>
-${product.name}<br><br>
+${safeName}
+
+<br><br>
 
 <strong>Category:</strong>
-${product.category}<br><br>
+${safeCategory}
+
+<br><br>
 
 <strong>Retailer:</strong>
-${product.retailer}<br><br>
+${safeRetailer}
 
-We have not added a product photograph
-until a correctly matching image can
-be sourced.
+<br><br>
+
+No specific product listing or price is claimed.
+Use the retailer button to search for this product.
+
 </div>
+
+<button
+type="button"
+class="retailer-link">
+🔎 Find on ${safeRetailer}
+</button>
 
 `;
 
 
-container.appendChild(card);
+const detailsButton =
+card.querySelector(".details");
+
+
+detailsButton.addEventListener(
+"click",
+function(){
+
+showDetails(this);
+
+}
+);
+
+
+const retailerButton =
+card.querySelector(".retailer-link");
+
+
+retailerButton.addEventListener(
+"click",
+function(){
+
+openRetailer(
+product.retailer,
+product.name
+);
+
+}
+);
+
+
+fragment.appendChild(card);
 
 });
 
-}
 
-
-function showDetails(button){
-
-const info =
-button.nextElementSibling;
-
-if(info.style.display==="block"){
-
-info.style.display="none";
-button.innerText="More Details";
-
-}else{
-
-info.style.display="block";
-button.innerText="Hide Details";
-
-}
+container.appendChild(fragment);
 
 }
 
 
-function chooseCategory(category,button){
+/* =====================================
+   CATEGORY FILTER
+===================================== */
 
-selectedCategory=category;
+function chooseCategory(category){
+
+selectedCategory =
+category;
+
 
 document
-.querySelectorAll(".category")
-.forEach(btn=>{
-btn.classList.remove("active");
+.querySelectorAll(".category-filter")
+.forEach(button=>{
+
+button.classList.toggle(
+"active",
+button.dataset.category === category
+);
+
 });
 
-button.classList.add("active");
 
 renderProducts();
 
 }
 
 
-function chooseRetailer(retailer,button){
+/* =====================================
+   RETAILER FILTER
+===================================== */
 
-selectedRetailer=retailer;
+function chooseRetailer(retailer){
+
+selectedRetailer =
+retailer;
+
 
 document
-.querySelectorAll(".retailer")
-.forEach(btn=>{
-btn.classList.remove("active");
+.querySelectorAll(".retailer-filter")
+.forEach(button=>{
+
+button.classList.toggle(
+"active",
+button.dataset.retailer === retailer
+);
+
 });
 
-button.classList.add("active");
 
 renderProducts();
 
 }
 
+
+/* =====================================
+   EVENT LISTENERS
+===================================== */
 
 document
 .getElementById("searchBox")
-.addEventListener("input",renderProducts);
+.addEventListener(
+"input",
+renderProducts
+);
 
+
+document
+.querySelectorAll(".category-filter")
+.forEach(button=>{
+
+button.addEventListener(
+"click",
+function(){
+
+chooseCategory(
+this.dataset.category
+);
+
+}
+);
+
+});
+
+
+document
+.querySelectorAll(".retailer-filter")
+.forEach(button=>{
+
+button.addEventListener(
+"click",
+function(){
+
+chooseRetailer(
+this.dataset.retailer
+);
+
+}
+);
+
+});
+
+
+/* =====================================
+   INITIAL LOAD
+===================================== */
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
 
 renderProducts();
+
+}
+);
 
 </script>
 
 </body>
 </html>
-
