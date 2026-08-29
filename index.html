@@ -1,61 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SmartFinds | Find Better Products</title>
+<title>SmartFinds</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 body{
   margin:0;
   font-family:Arial,sans-serif;
   background:#f5f7fb;
-  color:#172033
+  color:#172033;
 }
 
 header{
   background:#111827;
   color:white;
   text-align:center;
-  padding:38px 16px
+  padding:35px 15px;
 }
 
 header h1{
   margin:0;
-  font-size:36px
+  font-size:34px;
 }
 
 header p{
-  color:#d1d5db
+  color:#d1d5db;
 }
 
-nav{
+.search{
   background:white;
-  padding:12px;
+  padding:25px 15px;
   text-align:center;
-  box-shadow:0 2px 8px #ddd;
-  position:sticky;
-  top:0;
-  z-index:20
 }
 
-nav a{
-  color:#172033;
-  text-decoration:none;
-  margin:0 8px;
-  font-size:14px
+#searchBox{
+  width:92%;
+  max-width:650px;
+  padding:15px;
+  border:1px solid #ccc;
+  border-radius:10px;
+  font-size:16px;
 }
-margin-top:5px
+
+.filters{
+  background:white;
+  text-align:center;
+  padding:10px 15px 25px;
+}
+
+.filters button{
+  margin:4px;
+  padding:9px 13px;
+  border:1px solid #ddd;
+  border-radius:8px;
+  background:#f8fafc;
+  cursor:pointer;
+}
+
+.filters button.active{
+  background:#111827;
+  color:white;
+}
+
+h2{
+  max-width:1100px;
+  margin:25px auto 5px;
+  padding:0 20px;
+}
+
+.products{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:20px;
+}
+
+.product{
+  background:white;
+  padding:15px;
+  border-radius:14px;
+  box-shadow:0 3px 12px #ddd;
+}
+
+.product-image{
+  height:180px;
+  border-radius:10px;
+  background:#eef1f5;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+  font-weight:bold;
+  color:#6b7280;
+}
+
+.product h3{
+  margin-bottom:6px;
+}
+
+.category{
+  display:inline-block;
+  margin-top:12px;
+  padding:5px 8px;
+  background:#eef2ff;
+  border-radius:6px;
+  font-size:12px;
+}
+
+.retailer{
+  font-size:13px;
+  color:#666;
+  margin-top:6px;
 }
 
 .product p{
   color:#596273;
-  line-height:1.5
+  line-height:1.5;
 }
 
 .price{
   font-weight:bold;
-  margin:12px 0
+  margin:12px 0;
 }
 
 .product button{
@@ -63,59 +137,806 @@ margin-top:5px
   padding:11px;
   margin-top:6px;
   border-radius:8px;
-  cursor:pointer
+  cursor:pointer;
 }
 
 .details{
-  border:1px solid #d5d9e0;
-  background:white
+  background:white;
+  border:1px solid #ddd;
 }
 
-.compare{
-  border:1px solid #111827;
-  background:white
-}
-
-.compare.selected{
-  background:#111827;
-  color:white
-}
-
-.product-info{
+.info{
   display:none;
   background:#f3f4f6;
   padding:10px;
   margin-top:6px;
   border-radius:8px;
   font-size:14px;
-  line-height:1.5
 }
 
-.visit{
-  border:0;
-  background:#9ca3af;
-  color:white
+.compare{
+  background:white;
+  border:1px solid #111827;
+}
+
+.compare.selected{
+  background:#111827;
+  color:white;
 }
 
 .no-results{
   display:none;
   text-align:center;
-  padding:60px 20px
+  padding:60px 20px;
 }
 
-.compare-area{
-  display:none;
-  max-width:1100px;
-  margin:25px auto;
-  padding:20px;
-  background:white;
-  border-radius:14px;
-  overflow-x:auto
+footer{
+  margin-top:30px;
+  background:#111827;
+  color:#ddd;
+  text-align:center;
+  padding:30px;
 }
 
-.compare-table{
-  width:100%;
-  border-collapse:collapse;
-  min-width:600px
+@media(max-width:600px){
+  .products{
+    grid-template-columns:1fr;
+  }
 
-const fallbackImage
+  header h1{
+    font-size:28px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🛍️ SmartFinds</h1>
+  <p>Find useful products from different retailers</p>
+</header>
+
+<div class="search">
+  <input
+    id="searchBox"
+    type="search"
+    placeholder="🔎 Search products..."
+  >
+</div>
+
+<div class="filters">
+
+  <strong>Categories</strong><br>
+
+  <button class="category active" onclick="chooseCategory('All',this)">
+    All
+  </button>
+
+  <button class="category" onclick="chooseCategory('Education',this)">
+    📚 Education
+  </button>
+
+  <button class="category" onclick="chooseCategory('Electronics',this)">
+    💻 Electronics
+  </button>
+
+  <button class="category" onclick="chooseCategory('Student',this)">
+    🎒 Student
+  </button>
+
+  <button class="category" onclick="chooseCategory('Fashion',this)">
+    👕 Fashion
+  </button>
+
+  <button class="category" onclick="chooseCategory('Home',this)">
+    🏠 Home
+  </button>
+
+  <button class="category" onclick="chooseCategory('Gaming',this)">
+    🎮 Gaming
+  </button>
+
+  <button class="category" onclick="chooseCategory('Gifts',this)">
+    🎁 Gifts
+  </button>
+
+  <br><br>
+
+  <strong>Retailers</strong><br>
+
+  <button class="retailer active" onclick="chooseRetailer('All',this)">
+    All
+  </button>
+
+  <button class="retailer" onclick="chooseRetailer('Amazon',this)">
+    Amazon
+  </button>
+
+  <button class="retailer" onclick="chooseRetailer('Flipkart',this)">
+    Flipkart
+  </button>
+
+  <button class="retailer" onclick="chooseRetailer('AJIO',this)">
+    AJIO
+  </button>
+
+  <button class="retailer" onclick="chooseRetailer('Urbanic',this)">
+    Urbanic
+  </button>
+
+</div>
+
+<h2>Products</h2>
+
+<div class="products" id="products"></div>
+
+<div class="no-results" id="noResults">
+  <h2>No matching products</h2>
+  <p>Try another search.</p>
+</div>
+
+<footer>
+  <p>SmartFinds © 2026</p>
+  <p>Product information should always be checked with the retailer.</p>
+</footer>
+
+<script>
+
+/* =========================
+   PRODUCT DATABASE
+========================= */
+
+const products = [
+
+{
+id:1,
+name:"Scientific Calculator",
+category:"Education",
+retailer:"Amazon",
+description:"Scientific calculator for maths and study."
+},
+
+{
+id:2,
+name:"Notebook Set",
+category:"Education",
+retailer:"Flipkart",
+description:"Notebooks for school, college and revision."
+},
+
+{
+id:3,
+name:"Study Lamp",
+category:"Education",
+retailer:"Amazon",
+description:"Desk lamp for reading and studying."
+},
+
+{
+id:4,
+name:"Pen Set",
+category:"Education",
+retailer:"Flipkart",
+description:"Everyday writing pens."
+},
+
+{
+id:5,
+name:"Highlighter Set",
+category:"Education",
+retailer:"Amazon",
+description:"Highlighters for notes and revision."
+},
+
+{
+id:6,
+name:"Geometry Set",
+category:"Education",
+retailer:"Flipkart",
+description:"Geometry tools for students."
+},
+
+{
+id:7,
+name:"Book Stand",
+category:"Education",
+retailer:"Amazon",
+description:"Stand for textbooks and reading."
+},
+
+{
+id:8,
+name:"Study Planner",
+category:"Education",
+retailer:"Flipkart",
+description:"Planner for organizing study schedules."
+},
+
+{
+id:9,
+name:"Wireless Earphones",
+category:"Electronics",
+retailer:"Amazon",
+description:"Wireless earphones for everyday listening."
+},
+
+{
+id:10,
+name:"Wireless Mouse",
+category:"Electronics",
+retailer:"Flipkart",
+description:"Wireless mouse for computers."
+},
+
+{
+id:11,
+name:"Computer Keyboard",
+category:"Electronics",
+retailer:"Amazon",
+description:"Keyboard for computer use."
+},
+
+{
+id:12,
+name:"USB Flash Drive",
+category:"Electronics",
+retailer:"Flipkart",
+description:"Portable storage for compatible devices."
+},
+
+{
+id:13,
+name:"Laptop Stand",
+category:"Electronics",
+retailer:"Amazon",
+description:"Stand for a laptop workspace."
+},
+
+{
+id:14,
+name:"Bluetooth Speaker",
+category:"Electronics",
+retailer:"Flipkart",
+description:"Portable Bluetooth speaker."
+},
+
+{
+id:15,
+name:"Webcam",
+category:"Electronics",
+retailer:"Amazon",
+description:"Webcam for online classes and calls."
+},
+
+{
+id:16,
+name:"Power Bank",
+category:"Electronics",
+retailer:"Flipkart",
+description:"Portable power solution."
+},
+
+{
+id:17,
+name:"College Backpack",
+category:"Student",
+retailer:"Flipkart",
+description:"Backpack for books and everyday items."
+},
+
+{
+id:18,
+name:"Water Bottle",
+category:"Student",
+retailer:"Amazon",
+description:"Reusable everyday bottle."
+},
+
+{
+id:19,
+name:"Lunch Bag",
+category:"Student",
+retailer:"Flipkart",
+description:"Portable lunch bag."
+},
+
+{
+id:20,
+name:"Pencil Pouch",
+category:"Student",
+retailer:"Amazon",
+description:"Pouch for stationery."
+},
+
+{
+id:21,
+name:"Desk Organizer",
+category:"Student",
+retailer:"Flipkart",
+description:"Organizer for stationery."
+},
+
+{
+id:22,
+name:"Sticky Notes",
+category:"Student",
+retailer:"Amazon",
+description:"Notes for reminders and planning."
+},
+
+{
+id:23,
+name:"Document Folder",
+category:"Student",
+retailer:"Flipkart",
+description:"Folder for documents and notes."
+},
+
+{
+id:24,
+name:"Tote Bag",
+category:"Student",
+retailer:"Amazon",
+description:"Everyday carry bag."
+},
+
+{
+id:25,
+name:"Casual Shirt",
+category:"Fashion",
+retailer:"AJIO",
+description:"Casual clothing."
+},
+
+{
+id:26,
+name:"Sneakers",
+category:"Fashion",
+retailer:"AJIO",
+description:"Casual footwear."
+},
+
+{
+id:27,
+name:"Casual Dress",
+category:"Fashion",
+retailer:"Urbanic",
+description:"Casual fashion clothing."
+},
+
+{
+id:28,
+name:"Hoodie",
+category:"Fashion",
+retailer:"Urbanic",
+description:"Casual hoodie."
+},
+
+{
+id:29,
+name:"Denim Jeans",
+category:"Fashion",
+retailer:"AJIO",
+description:"Everyday denim."
+},
+
+{
+id:30,
+name:"T-Shirt",
+category:"Fashion",
+retailer:"Urbanic",
+description:"Casual everyday T-shirt."
+},
+
+{
+id:31,
+name:"Fashion Bag",
+category:"Fashion",
+retailer:"AJIO",
+description:"Everyday fashion bag."
+},
+
+{
+id:32,
+name:"Sunglasses",
+category:"Fashion",
+retailer:"Urbanic",
+description:"Fashion accessory."
+},
+
+{
+id:33,
+name:"LED Desk Lamp",
+category:"Home",
+retailer:"Amazon",
+description:"Desk or bedside lamp."
+},
+
+{
+id:34,
+name:"Storage Box",
+category:"Home",
+retailer:"Flipkart",
+description:"Storage and organization box."
+},
+
+{
+id:35,
+name:"Wall Clock",
+category:"Home",
+retailer:"Amazon",
+description:"Clock for home or study."
+},
+
+{
+id:36,
+name:"Cushion Cover",
+category:"Home",
+retailer:"Flipkart",
+description:"Decorative cushion cover."
+},
+
+{
+id:37,
+name:"Plant Pot",
+category:"Home",
+retailer:"Amazon",
+description:"Decorative plant pot."
+},
+
+{
+id:38,
+name:"Tabletop Mirror",
+category:"Home",
+retailer:"Flipkart",
+description:"Compact tabletop mirror."
+},
+
+{
+id:39,
+name:"Storage Basket",
+category:"Home",
+retailer:"Amazon",
+description:"Basket for home organization."
+},
+
+{
+id:40,
+name:"Desk Mat",
+category:"Home",
+retailer:"Flipkart",
+description:"Mat for a workspace."
+},
+
+{
+id:41,
+name:"Gaming Mouse",
+category:"Gaming",
+retailer:"Amazon",
+description:"Mouse for computer gaming."
+},
+
+{
+id:42,
+name:"Gaming Keyboard",
+category:"Gaming",
+retailer:"Flipkart",
+description:"Keyboard for gaming."
+},
+
+{
+id:43,
+name:"Gaming Headset",
+category:"Gaming",
+retailer:"Amazon",
+description:"Gaming audio headset."
+},
+
+{
+id:44,
+name:"Game Controller",
+category:"Gaming",
+retailer:"Flipkart",
+description:"Controller for compatible systems."
+},
+
+{
+id:45,
+name:"Gaming Chair",
+category:"Gaming",
+retailer:"Amazon",
+description:"Chair for gaming setups."
+},
+
+{
+id:46,
+name:"Mouse Pad",
+category:"Gaming",
+retailer:"Flipkart",
+description:"Mouse pad for computer use."
+},
+
+{
+id:47,
+name:"USB Microphone",
+category:"Gaming",
+retailer:"Amazon",
+description:"Microphone for compatible computers."
+},
+
+{
+id:48,
+name:"Monitor Stand",
+category:"Gaming",
+retailer:"Flipkart",
+description:"Stand for computer monitor."
+},
+
+{
+id:49,
+name:"Notebook Gift Set",
+category:"Gifts",
+retailer:"Amazon",
+description:"Stationery-style gift set."
+},
+
+{
+id:50,
+name:"Desk Gift Set",
+category:"Gifts",
+retailer:"Flipkart",
+description:"Desk accessories suitable as a gift."
+},
+
+{
+id:51,
+name:"Travel Mug",
+category:"Gifts",
+retailer:"Amazon",
+description:"Reusable travel mug."
+},
+
+{
+id:52,
+name:"Photo Frame",
+category:"Gifts",
+retailer:"Flipkart",
+description:"Decorative photo frame."
+},
+
+{
+id:53,
+name:"Desk Calendar",
+category:"Gifts",
+retailer:"Amazon",
+description:"Calendar for desk organization."
+},
+
+{
+id:54,
+name:"Journal",
+category:"Gifts",
+retailer:"Flipkart",
+description:"Journal for writing and planning."
+},
+
+{
+id:55,
+name:"Desk Plant",
+category:"Gifts",
+retailer:"Amazon",
+description:"Small decorative desk plant."
+},
+
+{
+id:56,
+name:"Gift Box",
+category:"Gifts",
+retailer:"Flipkart",
+description:"Gift packaging option."
+}
+
+];
+
+
+/* =========================
+   FILTERS
+========================= */
+
+let selectedCategory="All";
+let selectedRetailer="All";
+
+
+function renderProducts(){
+
+const search =
+document
+.getElementById("searchBox")
+.value
+.toLowerCase()
+.trim();
+
+
+const results = products.filter(product=>{
+
+const categoryMatch =
+selectedCategory==="All" ||
+product.category===selectedCategory;
+
+const retailerMatch =
+selectedRetailer==="All" ||
+product.retailer===selectedRetailer;
+
+const searchText =
+(
+product.name+" "+
+product.category+" "+
+product.retailer+" "+
+product.description
+).toLowerCase();
+
+const searchMatch =
+search==="" ||
+searchText.includes(search);
+
+return categoryMatch &&
+retailerMatch &&
+searchMatch;
+
+});
+
+
+const container =
+document.getElementById("products");
+
+const noResults =
+document.getElementById("noResults");
+
+container.innerHTML="";
+
+
+if(results.length===0){
+
+noResults.style.display="block";
+
+return;
+
+}
+
+
+noResults.style.display="none";
+
+
+results.forEach(product=>{
+
+const card =
+document.createElement("div");
+
+card.className="product";
+
+
+card.innerHTML=`
+
+<div class="product-image">
+🖼️<br>
+Image coming soon
+</div>
+
+<div class="category">
+${product.category}
+</div>
+
+<h3>
+${product.name}
+</h3>
+
+<div class="retailer">
+Retailer: ${product.retailer}
+</div>
+
+<p>
+${product.description}
+</p>
+
+<div class="price">
+Price: Check retailer
+</div>
+
+<button
+class="details"
+onclick="showDetails(this)">
+More Details
+</button>
+
+<div class="info">
+<strong>Product:</strong>
+${product.name}<br><br>
+
+<strong>Category:</strong>
+${product.category}<br><br>
+
+<strong>Retailer:</strong>
+${product.retailer}<br><br>
+
+We have not added a product photograph
+until a correctly matching image can
+be sourced.
+</div>
+
+`;
+
+
+container.appendChild(card);
+
+});
+
+}
+
+
+function showDetails(button){
+
+const info =
+button.nextElementSibling;
+
+if(info.style.display==="block"){
+
+info.style.display="none";
+button.innerText="More Details";
+
+}else{
+
+info.style.display="block";
+button.innerText="Hide Details";
+
+}
+
+}
+
+
+function chooseCategory(category,button){
+
+selectedCategory=category;
+
+document
+.querySelectorAll(".category")
+.forEach(btn=>{
+btn.classList.remove("active");
+});
+
+button.classList.add("active");
+
+renderProducts();
+
+}
+
+
+function chooseRetailer(retailer,button){
+
+selectedRetailer=retailer;
+
+document
+.querySelectorAll(".retailer")
+.forEach(btn=>{
+btn.classList.remove("active");
+});
+
+button.classList.add("active");
+
+renderProducts();
+
+}
+
+
+document
+.getElementById("searchBox")
+.addEventListener("input",renderProducts);
+
+
+renderProducts();
+
+</script>
+
+</body>
+</html>
+
